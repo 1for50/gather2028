@@ -23,6 +23,8 @@
    --------------------------------------------------------------------------
    LINKS: paste a full web address between the quotes to turn on that button.
           Links left as "" show "Details coming soon" instead.
+   WEBSITE / PARTNERS: logos and "Visit" links use these addresses. A partner
+          left as "" shows its logo without a link.
    REGISTRATION_OPEN: change to true when registration opens (and add the
           register link). Until then the page shows REGISTRATION_NOTE.
    ========================================================================== */
@@ -33,6 +35,19 @@ window.GATHER = {
     roadToCebu:   "",   // Road to Cebu online events
     register:     "",   // registration form (add when it opens)
     contact:      ""    // e.g. a contact page on the 1for50 website
+  },
+
+  WEBSITE: "https://1for50.net",
+
+  PARTNERS: {
+    "1for50":   "https://1for50.net",
+    "414":      "https://414movement.com/",
+    "wwo":      "https://worldwithoutorphans.org/",
+    "gcf":      "https://childreneverywhere.com/",
+    "action":   "https://actioninternational.org",
+    "onehope":  "https://onehope.net",
+    "mtc":      "https://missiontochildren.org/",
+    "kidstory": "https://kidsaroundtheworld.com/"
   },
 
   REGISTRATION_OPEN: false,
@@ -83,6 +98,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:1rem;padding-block:.55rem}
 .top img{height:40px;width:auto}
+.home{display:block;border-radius:6px}
 .top nav{margin-left:auto;display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:flex-end}
 .top nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.92rem}
 .top nav a:hover{color:var(--purple)}
@@ -182,6 +198,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.6rem 2.6rem}
 .logos img{height:58px;width:auto!important;max-width:200px;object-fit:contain}
 .logos img.tall{height:84px}
+.logos a{display:block;border-radius:8px;transition:transform .15s ease}
+.logos a:hover{transform:translateY(-2px)}
 @media (max-width:520px){.logos{gap:1.2rem 1.6rem}.logos img{height:40px;max-width:150px}.logos img.tall{height:62px}}
 
 /* footer */
@@ -190,6 +208,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .foot .wrap{padding-block:2.6rem 2.2rem;display:grid;gap:.7rem;justify-items:center}
 .foot h2{color:var(--yellow);font-size:clamp(1.5rem,3.4vw,2.2rem);letter-spacing:.01em}
 .foot p{max-width:40rem;color:#e7e0f3}
+.foot-site{color:#fff;font-weight:700;text-underline-offset:3px}
 .foot-contact{color:var(--yellow);font-weight:700}
 .foot small{color:#b9add2;font-size:.85rem;margin-top:.8rem}
 .foot-line{height:12px;background:var(--teal)}
@@ -199,7 +218,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 <body>
 <header class="top band">
   <div class="wrap">
-    <img src="assets/logo-1for50.png" alt="1for50">
+    <a class="home" href="https://1for50.net" data-site><img src="assets/logo-1for50.png" alt="1for50 website"></a>
     <nav aria-label="Page sections">
       <a href="#vision" class="keep">Vision</a>
       <a href="#heart">The heart of Gather</a>
@@ -365,14 +384,14 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     <div class="wrap">
       <h2 id="partners-h">Collaborating partner networks</h2>
       <div class="logos">
-        <img class="tall" src="assets/logo-1for50.png" alt="1for50">
-        <img src="assets/logo-414.png" alt="4/14 Movement">
-        <img src="assets/logo-wwo.png" alt="World Without Orphans">
-        <img class="tall" src="assets/logo-gcf.png" alt="Global Children's Forum">
-        <img src="assets/logo-action.png" alt="ACTION">
-        <img src="assets/logo-onehope.png" alt="OneHope: God's Word. Every Child.">
-        <img src="assets/logo-mtc.png" alt="Mission to Children">
-        <img src="assets/logo-kidstory.png" alt="KIDStory">
+        <img data-partner="1for50" class="tall" src="assets/logo-1for50.png" alt="1for50">
+        <img data-partner="414" src="assets/logo-414.png" alt="4/14 Movement">
+        <img data-partner="wwo" src="assets/logo-wwo.png" alt="World Without Orphans">
+        <img data-partner="gcf" class="tall" src="assets/logo-gcf.png" alt="Global Children's Forum">
+        <img data-partner="action" src="assets/logo-action.png" alt="ACTION">
+        <img data-partner="onehope" src="assets/logo-onehope.png" alt="OneHope: God's Word. Every Child.">
+        <img data-partner="mtc" src="assets/logo-mtc.png" alt="Mission to Children">
+        <img data-partner="kidstory" src="assets/logo-kidstory.png" alt="KIDStory">
       </div>
     </div>
   </section>
@@ -384,6 +403,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     <div class="wrap">
       <h2>JOIN US IN CEBU, PHILIPPINES!</h2>
       <p>Mark your calendars! Gathering children’s ministry leaders to empower the next generation.</p>
+      <p class="foot-links"><a class="foot-site" href="https://1for50.net" data-site>Visit 1for50.net for training, resources and videos →</a></p>
       <p id="footContact"></p>
       <small>Philippines 2028 GATHER · 17–20 October 2028 · Cebu, Philippines · Venue to be announced</small>
     </div>
@@ -408,6 +428,17 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   if (G.REGISTRATION_OPEN) document.getElementById("regFact").textContent = "Open now";
   var c = (G.LINKS||{}).contact;
   if (c) document.getElementById("footContact").innerHTML = '<a class="foot-contact" href="'+esc(c)+'" target="_blank" rel="noopener">Contact the Gather team →</a>';
+
+  // website + partner links (from settings)
+  document.querySelectorAll("[data-site]").forEach(function(a){ if (G.WEBSITE) a.href = G.WEBSITE; });
+  document.querySelectorAll("[data-partner]").forEach(function(img){
+    var u = (G.PARTNERS||{})[img.getAttribute("data-partner")];
+    if (!u) return;
+    var a = document.createElement("a");
+    a.href = u; a.target = "_blank"; a.rel = "noopener";
+    a.setAttribute("aria-label", img.alt + " website");
+    img.parentNode.insertBefore(a, img); a.appendChild(img);
+  });
 
   // share
   var url = location.href.split("#")[0];
